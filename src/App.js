@@ -1,6 +1,6 @@
 import './App.css';
 import Expenses from './components/Expenses/Expenses';
-import NewExpense from './components/NewExpense/NewExpense';
+// import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
      <h1>App Component</h1>
-     <NewExpense></NewExpense>
+     {/* <NewExpense></NewExpense> */}
      <Expenses></Expenses>
 
     </div>
