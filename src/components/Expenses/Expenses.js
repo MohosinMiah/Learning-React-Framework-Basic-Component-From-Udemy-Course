@@ -8,6 +8,9 @@ function Expenses(){
         {  id: "e3" , title: "Buy New Shirt", amount: 2000, date: new Date(2022, 5, 25) }
        ]
 
+
+
+
 return (
     <div className="expenses">
     {
