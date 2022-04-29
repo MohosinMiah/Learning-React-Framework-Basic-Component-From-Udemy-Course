@@ -7,6 +7,7 @@ const ExpenseForm = (props)=>{
     const [ enteredAmount, setEnteredAmount ] = useState('');
     const [ enteredDate, setEnteredDate ] = useState('');
 
+    const [ isFormOpen, setIsFormOpen ] = useState(true);
     
     // const [ userInput, setUserInput ] =  useState({
     //     enteredTitle : '',
@@ -57,9 +58,18 @@ const ExpenseForm = (props)=>{
                     setEnteredDate(' ');
     }
 
+    const formDisplayHandler = () => {
+
+        setIsFormOpen((prevState)=>{
+            return !isFormOpen;
+        });
+
+    }
+
+
     return(
         <div> 
-            <form  onSubmit={formHandler}> 
+            <form  onSubmit={formHandler} style={isFormOpen ? {display:'none'} : {display:'block'} }> 
             <div className="new-expense__controls">
             <div className="new-expense__control">
                     <label>Title</label>
@@ -90,12 +100,14 @@ const ExpenseForm = (props)=>{
                     </input>
                 </div>
                 <div className="new-expense__actions">
-                <input type="submit" value="Submit" />
+                <button onClick={formDisplayHandler}>Cancel</button>
+                <button type="submit"> Add Expense </button>
                 </div>
     
             </div>
 
         </form>
+        <button onClick={formDisplayHandler}>Add New Expense</button>
         </div>
     )
 }

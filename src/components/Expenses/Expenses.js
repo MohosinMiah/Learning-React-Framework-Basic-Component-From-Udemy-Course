@@ -40,12 +40,13 @@ return (
 
     
     {
-  expenses.map(function(expense, index){
-        if( expense.date.getFullYear().toString() === filteredYear.toString() ) {
-    return <ExpenseItem key={index} title={expense.title} amount={expense.amount} date={expense.date} ></ExpenseItem>
+      expenses.map( function( expense, index ){
+        if( expense.date.getFullYear().toString() === filteredYear.toString() )
+        {
+              return <ExpenseItem key={index} title={expense.title} amount={expense.amount} date={expense.date} ></ExpenseItem>
         }
 
-  })
+      })
     } 
 
 
