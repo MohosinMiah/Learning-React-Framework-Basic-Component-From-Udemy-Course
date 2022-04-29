@@ -3,13 +3,14 @@ import { useState } from 'react';
 import NewExpense from '../NewExpense/NewExpense';
 import ExpenseFilter from './ExpenseFilter';
 import ExpenseItem from "./ExpenseItem";
+import ExpensesChart from './ExpensesChart';
 
 function Expenses(){
 
     const initial_expenses = [
-        {  id: "e2" , title: "Buy New 222", amount: 20, date: new Date(2020, 5, 25) },
+        {  id: "e2" , title: "Buy New 222", amount: 20, date: new Date(2020, 4, 25) },
         {  id: "e3" , title: "Buy New 333", amount: 21, date: new Date(2021, 5, 25) },
-        {  id: "e4" , title: "Buy New 444", amount: 22, date: new Date(2022, 5, 25) },
+        {  id: "e4" , title: "Buy New 444", amount: 22, date: new Date(2022, 2, 25) },
         {  id: "e5" , title: "Buy New 555", amount: 22, date: new Date(2022, 5, 25) },
         {  id: "e6" , title: "Buy New 666", amount: 66, date: new Date(2019, 5, 25) },
        ];
@@ -31,16 +32,20 @@ function Expenses(){
           return [expenseData, ...prevExpanses];
         });
        }
+ 
+     const filterDataByYear =  expenses.filter( function( expense, index ) {
+        return  expense.date.getFullYear().toString() === filteredYear.toString();      
 
+      });
 
 return (
     <div className="expenses">
            <NewExpense addExpense={addExpenseHandler}></NewExpense>
            <ExpenseFilter selected={filteredYear} onChangeFilter={filterChangeHandler} ></ExpenseFilter>
-
-    
+            <ExpensesChart expenses={filterDataByYear}/>
+          
     {
-      expenses.map( function( expense, index ){
+      filterDataByYear.map( function( expense, index ){
         if( expense.date.getFullYear().toString() === filteredYear.toString() )
         {
               return <ExpenseItem key={index} title={expense.title} amount={expense.amount} date={expense.date} ></ExpenseItem>
